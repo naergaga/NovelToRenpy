@@ -11,7 +11,8 @@ namespace NovelToRenpy.Test
         {
             var p = new BookProvider();
             var book = p.Get("E:\\迅雷下载\\test.txt");
-            ;
+            var b = new RpyBuilder();
+            b.GetList(book.List);
         }
     }
 }

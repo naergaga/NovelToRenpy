@@ -32,13 +32,15 @@ namespace NovelToRenpy
             string line = null;
             while ((line = sr.ReadLine()) != null)
             {
-                var matchs = Regex.Matches(line,"(.*)(“.+”)");
+                var matchs = Regex.Matches(line, "(“.+”)|(.*)(“.+”)");
                 foreach (Match m in matchs)
                 {
-                    foreach (Group g in m.Groups)
+                    for (int i = 1; i < m.Groups.Count; i++)
                     {
-                        
+                        var g = m.Groups[i];
+                        Console.Write($"{g.Value} _ ");
                     }
+                    Console.WriteLine();
                 }
             }
             
