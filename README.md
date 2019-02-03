@@ -3,3 +3,7 @@ Ren'Py是一个视觉新颖的引擎 - 被来自世界各地的数千名创作�
 
 # NovelToRenpy
 将中文小说转换成rpy脚本文件。
+
+---------------------------
+图标使用
+https://www.flaticon.com/free-icon/whale_1463140
