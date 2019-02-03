@@ -42,7 +42,7 @@ namespace NovelToRenpy
                         ContentAdd(line);
                     }
                 }
-                if (count >= 3) break;
+                if (count > 200) break;
             }
             return book;
         }
