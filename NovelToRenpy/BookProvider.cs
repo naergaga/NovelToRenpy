@@ -18,7 +18,7 @@ namespace NovelToRenpy
             var sr = new StreamReader(path);
             var book = new Book() { List = new List<Chapter>() };
             string line = null;
-            int count = 0;
+            int count = 1;
             while ((line = sr.ReadLine()) != null)
             {
                 var match = Regex.Match(line, "第.+章\\s+(.*)");
@@ -33,6 +33,7 @@ namespace NovelToRenpy
                     }
                     currentChapter = new Chapter();
                     currentChapter.Name = match.Groups[1].Value;
+                    currentChapter.Index = count;
                 }
                 else
                 {
@@ -41,14 +42,14 @@ namespace NovelToRenpy
                         ContentAdd(line);
                     }
                 }
-                if (count > 100) break;
+                if (count >= 3) break;
             }
             return book;
         }
 
         private void ContentAdd(string line)
         {
-            builder.AppendLine(line);
+            builder.AppendLine(line.Trim());
         }
 
         private void EndChapter()
