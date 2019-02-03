@@ -12,6 +12,7 @@ namespace NovelToRenpy
     {
         private string statementOffset = "    ";
         private RpyFileOption _fileOption;
+        static char[] _invalidFileNameChars = Path.GetInvalidFileNameChars();
 
         public RpyOption Option { get; set; }
         public RpyFileOption FileOption
@@ -73,7 +74,16 @@ namespace NovelToRenpy
 
         private string GetFileName(Chapter chapter)
         {
-            return $"{chapter.Index.ToString("0000")}{chapter.Name}.rpy";
+            StringBuilder sb = new StringBuilder();
+            foreach (var ch in chapter.Name)
+            {
+                if (!_invalidFileNameChars.Any(t => t == ch))
+                {
+                    sb.Append(ch);
+                }
+            }
+
+            return $"{chapter.Index.ToString("0000")}{sb.ToString()}.rpy";
         }
 
         private string GetGroupName(int gorupIndex)
